@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">WearOs</string>
     <string name="hello_world">Hello, %1$s!</string>
+    <string name="watch_brand_name">CROWN ÉLITE</string>
+    <string name="watch_series_label">LUXURY SERIES</string>
+    <string name="digital_time_format">%1$02d:%2$02d</string>
 </resources>
