@@ -12,7 +12,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -27,24 +28,20 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.wear.compose.material3.AppScaffold
 import androidx.wear.compose.material3.ScreenScaffold
-import androidx.wear.compose.material3.Text
 import androidx.wear.compose.ui.tooling.preview.WearPreviewDevices
 import androidx.wear.compose.ui.tooling.preview.WearPreviewFontScales
-import com.example.wearos.R
-import com.example.wearos.presentation.theme.CRPrueba
+import com.example.wearos.presentation.theme.WearOsTheme
 import java.time.LocalTime
 import kotlin.math.cos
 import kotlin.math.min
 import kotlin.math.sin
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.isActive
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,10 +54,10 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun WearApp() {
-    CRPrueba {
+    WearOsTheme {
         AppScaffold {
             ScreenScaffold {
-                ElegantWatchFace(brandName = stringResource(R.string.watch_brand_name))
+                ElegantWatchFace(brandName = "CROWN ÉLITE")
             }
         }
     }
@@ -71,7 +68,7 @@ private fun ElegantWatchFace(brandName: String) {
     var currentTime by remember { mutableStateOf(LocalTime.now()) }
 
     LaunchedEffect(Unit) {
-        while (isActive) {
+        while (true) {
             currentTime = LocalTime.now()
             delay(1000)
         }
@@ -89,7 +86,7 @@ private fun ElegantWatchFace(brandName: String) {
             modifier =
                 Modifier
                     .size(172.dp)
-                    .clip(CircleShape)
+                    .clip(androidx.compose.foundation.shape.CircleShape)
                     .background(Color(0xCC101010)),
             contentAlignment = Alignment.Center,
         ) {
@@ -191,15 +188,15 @@ private fun TimeOverlay(time: LocalTime) {
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(
-            text = stringResource(R.string.digital_time_format, time.hour, time.minute),
+            text = "%02d:%02d".format(time.hour, time.minute),
             color = Color(0xFFF6E8C3),
-            fontSize = 18.sp,
+            style = MaterialTheme.typography.bodyLarge,
             fontWeight = FontWeight.Bold,
             letterSpacing = 1.sp,
             textAlign = TextAlign.Center,
         )
         Text(
-            text = stringResource(R.string.watch_series_label),
+            text = "LUXURY SERIES",
             color = Color(0xFFB88A2C),
             fontSize = 10.sp,
             letterSpacing = 1.2.sp,
