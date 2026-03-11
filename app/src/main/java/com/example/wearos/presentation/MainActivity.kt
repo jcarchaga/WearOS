@@ -12,7 +12,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.wear.compose.material3.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -189,7 +190,7 @@ private fun TimeOverlay(time: LocalTime) {
         Text(
             text = "%02d:%02d".format(time.hour, time.minute),
             color = Color(0xFFF6E8C3),
-            fontSize = 18.sp,
+            style = MaterialTheme.typography.bodyLarge,
             fontWeight = FontWeight.Bold,
             letterSpacing = 1.sp,
             textAlign = TextAlign.Center,
