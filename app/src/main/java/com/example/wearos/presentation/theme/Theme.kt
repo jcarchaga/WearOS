@@ -4,14 +4,14 @@ import androidx.compose.runtime.Composable
 import androidx.wear.compose.material3.MaterialTheme
 
 @Composable
-fun CRPrueba(content: @Composable () -> Unit) {
-    MaterialTheme(content = content)
-}
-
-/**
- * Backward-compatible alias for previous callers.
- */
-@Composable
-fun WearOsTheme(content: @Composable () -> Unit) {
-    CRPrueba(content = content)
+fun CRPrueba(
+    content: @Composable () -> Unit
+) {
+    /**
+     * Empty theme to customize for your app.
+     * See: https://developer.android.com/jetpack/compose/designsystems/custom
+     */
+    MaterialTheme(
+        content = content
+    )
 }
